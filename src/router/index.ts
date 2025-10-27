@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { authUser, authIsLoading } from "@/lib/auth";
+import { watch } from "vue";
+import { authUser, authIsLoading, initAuth } from "@/lib/auth";
 
 const routes = [
   {
@@ -48,12 +49,28 @@ const router = createRouter({
   routes,
 });
 
+// --- Initialize auth before first route ---
+initAuth();
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !authIsLoading.value && !authUser.value) {
+  // Wait until auth check finishes
+  if (authIsLoading.value) {
+    const unwatch = watch(authIsLoading, (val) => {
+      if (!val) {
+        unwatch();
+        handleRouteGuard(to, next);
+      }
+    });
+  } else {
+    handleRouteGuard(to, next);
+  }
+});
+
+function handleRouteGuard(to: any, next: any) {
+  if (to.meta.requiresAuth && !authUser.value) {
     next("/auth/login");
   } else {
     next();
   }
-});
+}
 
 export default router;
