@@ -24,7 +24,6 @@
     "vue": "^3.4.0",
     "vue-router": "4.6.3",
     "vue-sonner": "^2.0.9",
-    "vue-toastification": "^1.7.14",
     "zod": "^3.22.0"
   },
   "devDependencies": {
