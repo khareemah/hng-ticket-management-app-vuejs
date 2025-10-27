@@ -73,14 +73,14 @@ const router = createRouter({
 //   }
 // }
 
-router.beforeEach(async (to) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ["/login", "signup", "/"];
+router.beforeEach((to) => {
+  const publicPages = ["/", "/auth/login", "/auth/signup"];
   const authRequired = !publicPages.includes(to.path);
+  const user = authUser.value; // use .value since it's a ref
 
-  if (authRequired && !authUser) {
-    // auth.returnUrl = to.fullPath;
+  if (authRequired && !user) {
     return "/auth/login";
   }
 });
+
 export default router;
