@@ -50,27 +50,37 @@ const router = createRouter({
 });
 
 // --- Initialize auth before first route ---
-initAuth();
-router.beforeEach((to, from, next) => {
-  // Wait until auth check finishes
-  if (authIsLoading.value) {
-    const unwatch = watch(authIsLoading, (val) => {
-      if (!val) {
-        unwatch();
-        handleRouteGuard(to, next);
-      }
-    });
-  } else {
-    handleRouteGuard(to, next);
+// initAuth();
+// router.beforeEach((to, from, next) => {
+//   // Wait until auth check finishes
+//   if (authIsLoading.value) {
+//     const unwatch = watch(authIsLoading, (val) => {
+//       if (!val) {
+//         unwatch();
+//         handleRouteGuard(to, next);
+//       }
+//     });
+//   } else {
+//     handleRouteGuard(to, next);
+//   }
+// });
+
+// function handleRouteGuard(to: any, next: any) {
+//   if (to.meta.requiresAuth && !authUser.value) {
+//     next("/auth/login");
+//   } else {
+//     next();
+//   }
+// }
+
+router.beforeEach(async (to) => {
+  // redirect to login page if not logged in and trying to access a restricted page
+  const publicPages = ["/login", "signup", "/"];
+  const authRequired = !publicPages.includes(to.path);
+
+  if (authRequired && !authUser) {
+    // auth.returnUrl = to.fullPath;
+    return "/login";
   }
 });
-
-function handleRouteGuard(to: any, next: any) {
-  if (to.meta.requiresAuth && !authUser.value) {
-    next("/auth/login");
-  } else {
-    next();
-  }
-}
-
 export default router;
