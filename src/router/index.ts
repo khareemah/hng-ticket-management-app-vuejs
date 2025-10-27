@@ -80,7 +80,7 @@ router.beforeEach(async (to) => {
 
   if (authRequired && !authUser) {
     // auth.returnUrl = to.fullPath;
-    return "/login";
+    return "/auth/login";
   }
 });
 export default router;
