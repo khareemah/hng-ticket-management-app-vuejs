@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-background">
     <!-- Header -->
     <header class="bg-card border-b border-border sticky top-0 z-40">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div class="flex justify-between items-center">
           <h1 class="text-2xl font-bold text-card-foreground">Create Ticket</h1>
 
@@ -172,7 +172,7 @@
     <footer
       class="bg-secondary/50 border-t border-border py-8 px-4 sm:px-6 lg:px-8 mt-12"
     >
-      <div class="max-w-7xl mx-auto text-center text-muted-foreground">
+      <div class="max-w-[1440px] mx-auto text-center text-muted-foreground">
         &copy; 2025 TicketFlow. All rights reserved.
       </div>
     </footer>
