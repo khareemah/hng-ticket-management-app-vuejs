@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { watch } from "vue";
-import { authUser, authIsLoading, initAuth } from "@/lib/auth";
+
+import { authUser } from "@/lib/auth";
 
 const routes = [
   {
