@@ -197,10 +197,14 @@ const ticketSchema = z.object({
     .max(100, "Title must not exceed 100 characters"),
   description: z
     .string()
-    .min(3, "Description must be at least 3 characters")
-    .max(1000, "Description too long")
+    .trim()
     .optional()
-    .nullable(),
+    .refine((val) => !val || val.length >= 3, {
+      message: "Description must be at least 3 characters if provided",
+    })
+    .refine((val) => !val || val.length <= 1000, {
+      message: "Description must not exceed 1000 characters",
+    }),
   status: z.string().nonempty("Status is required"),
   priority: z.string().optional(),
 });

@@ -5,6 +5,8 @@
 **TicketFlow** is a simple and elegant ticket management system built for the HNG Stage 2 task.  
 It allows users to create, edit, and manage support tickets seamlessly in a modern Vue 3 environment.
 
+🌐 **Live Demo:** [https://hng-ticket-management-app-vuejs.netlify.app](https://hng-ticket-management-app-vuejs.netlify.app)
+
 ---
 
 ## ✨ Features
@@ -12,7 +14,6 @@ It allows users to create, edit, and manage support tickets seamlessly in a mode
 - 📝 Create, view, and update support tickets
 - 🎯 Set ticket priority and status
 - 🧭 Responsive and clean user interface
-- 🌙 Dark mode support (via Tailwind CSS theme tokens)
 - 🔒 Authentication and logout functionality
 - 🔔 Toast notifications using Sonner
 - ⚡ Built with Vue 3 Composition API and TypeScript
@@ -38,8 +39,8 @@ It allows users to create, edit, and manage support tickets seamlessly in a mode
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone <your-repo-url>
-cd ticketflow
+git clone https://github.com/khareemah/hng-ticket-management-app-vuejs
+cd hng-ticket-management-app-vuejs
 ```
 
 ### 2️⃣ Install dependencies
