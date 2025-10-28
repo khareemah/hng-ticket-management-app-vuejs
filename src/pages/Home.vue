@@ -81,16 +81,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative py-40 md:py-20 overflow-hidden">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative py-40 md:py-28 overflow-hidden bg-background">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Left content -->
           <div>
             <h1
-              class="text-5xl md:text-6xl font-bold text-foreground mb-6 text-balance"
+              class="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight"
             >
               Manage Your Tickets Effortlessly
             </h1>
-            <p class="text-xl text-muted-foreground mb-8 text-pretty">
+            <p class="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg">
               TicketFlow is a modern ticket management system designed to
               streamline your workflow and boost productivity.
             </p>
@@ -99,20 +100,20 @@
               <RouterLink
                 v-if="authUser"
                 to="/dashboard"
-                class="px-8 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition font-medium"
+                class="px-8 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition font-medium shadow-sm"
               >
                 Dashboard
               </RouterLink>
               <template v-else>
                 <RouterLink
                   to="/auth/login"
-                  class="bg-background border border-border text-black hover:bg-background px-4 py-2 rounded-md transition font-medium w-[120px] flex items-center justify-center"
+                  class="border border-border text-foreground hover:bg-accent/10 px-4 py-2 rounded-md transition font-medium w-[120px] flex items-center justify-center"
                 >
                   Login
                 </RouterLink>
                 <RouterLink
                   to="/auth/signup"
-                  class="bg-primary rounded-md text-primary-foreground px-4 py-2 hover:bg-primary/90 transition font-medium"
+                  class="bg-primary rounded-md text-primary-foreground px-4 py-2 hover:bg-primary/90 transition font-medium shadow"
                 >
                   Get Started
                 </RouterLink>
@@ -120,36 +121,72 @@
             </div>
           </div>
 
-          <!-- Decorative circles -->
+          <!-- Decorative blur elements -->
           <div class="relative h-96 hidden md:block">
+            <!-- Top right gradient blob -->
             <div
-              class="absolute top-0 right-0 w-64 h-64 bg-primary/30 rounded-full blur-3xl"
+              class="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #3b82f6aa,
+                  #60a5fa66,
+                  transparent
+                );
+              "
             ></div>
+
+            <!-- Bottom left gradient blob -->
             <div
-              class="absolute bottom-0 left-0 w-48 h-48 bg-accent/30 rounded-full blur-3xl"
+              class="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl"
+              style="
+                background: linear-gradient(
+                  45deg,
+                  #60a5fa55,
+                  #3b82f633,
+                  transparent
+                );
+              "
+            ></div>
+
+            <!-- Subtle middle circle -->
+            <div
+              class="absolute inset-0 m-auto w-40 h-40 rounded-full blur-2xl"
+              style="background-color: #3b82f622"
             ></div>
           </div>
         </div>
       </div>
 
-      <!-- Wave -->
-      <div class="absolute bottom-0 left-0 right-0 -mb-1 text-primary">
+      <!-- Layered Blue Wave Background -->
+      <div class="absolute bottom-0 left-0 right-0">
         <svg
           class="w-full h-auto"
-          viewBox="0 0 1440 120"
+          viewBox="0 0 1440 200"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <!-- First wave -->
           <path
-            d="M0,40 Q360,0 720,40 T1440,40 L1440,120 L0,120 Z"
-            fill="currentColor"
-            class="text-primary/10"
+            d="M0,160 Q360,120 720,160 T1440,160 L1440,200 L0,200 Z"
+            fill="url(#blueWave1)"
           />
+          <!-- Second wave -->
           <path
-            d="M0,60 Q360,20 720,60 T1440,60 L1440,120 L0,120 Z"
-            fill="currentColor"
-            class="text-primary/5"
+            d="M0,180 Q360,140 720,180 T1440,180 L1440,200 L0,200 Z"
+            fill="url(#blueWave2)"
           />
+
+          <defs>
+            <linearGradient id="blueWave1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.15" />
+            </linearGradient>
+            <linearGradient id="blueWave2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.1" />
+              <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.1" />
+            </linearGradient>
+          </defs>
         </svg>
       </div>
     </section>
