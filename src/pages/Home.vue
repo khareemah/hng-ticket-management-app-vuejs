@@ -122,7 +122,7 @@
           </div>
 
           <!-- Decorative blur elements -->
-          <div class="relative h-96 hidden md:block">
+          <div class="relative h-96 block">
             <!-- Top right gradient blob -->
             <div
               class="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl"
