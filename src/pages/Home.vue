@@ -121,8 +121,8 @@
             </div>
           </div>
 
-          <!-- Decorative blur elements -->
-          <div class="relative h-96 block">
+          <!-- Decorative blur + small circles -->
+          <div class="relative h-96 hidden md:block">
             <!-- Top right gradient blob -->
             <div
               class="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl"
@@ -154,6 +154,14 @@
               class="absolute inset-0 m-auto w-40 h-40 rounded-full blur-2xl"
               style="background-color: #3b82f622"
             ></div>
+
+            <!-- Small animated unblurred circles -->
+            <div
+              class="absolute top-12 left-32 w-6 h-6 bg-[#3B82F6] rounded-full animate-spin-slow shadow-lg"
+            ></div>
+            <div
+              class="absolute bottom-20 right-24 w-8 h-8 bg-[#60A5FA] rounded-full animate-spin-reverse shadow-md"
+            ></div>
           </div>
         </div>
       </div>
@@ -166,17 +174,14 @@
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <!-- First wave -->
           <path
             d="M0,160 Q360,120 720,160 T1440,160 L1440,200 L0,200 Z"
             fill="url(#blueWave1)"
           />
-          <!-- Second wave -->
           <path
             d="M0,180 Q360,140 720,180 T1440,180 L1440,200 L0,200 Z"
             fill="url(#blueWave2)"
           />
-
           <defs>
             <linearGradient id="blueWave1" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
@@ -188,6 +193,29 @@
             </linearGradient>
           </defs>
         </svg>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-secondary/30">
+      <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-bold text-center mb-12 text-foreground">
+          Why Choose TicketFlow?
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            v-for="feature in features"
+            :key="feature.title"
+            class="p-6 bg-card rounded-lg border border-border"
+          >
+            <div class="text-4xl mb-4">{{ feature.icon }}</div>
+            <h3 class="text-xl font-semibold mb-2 text-card-foreground">
+              {{ feature.title }}
+            </h3>
+            <p class="text-muted-foreground">{{ feature.description }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
